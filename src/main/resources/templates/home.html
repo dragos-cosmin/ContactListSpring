@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/head">Head</div>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<!-- Main Content -->
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="display-4">Contacts</h1>
+            <p class="lead text-muted">Get instant access your favorite contacts.</p>
+            <p>
+                <a href="#" th:href="@{/contacts/all}" class="btn btn-lg btn-primary my-5 mx-2">Get started</a>
+                <a href="#" class="btn btn-lg btn-outline-secondary my-5 mx-2">Learn more</a>
+            </p>
+        </div>
+    </section>
+</main>
+<!-- Finish Main Content -->
+
+<div th:replace="fragments/footer">Footer</div>
+
+<div th:replace="fragments/scripts">Scripts</div>
+</body>
+</html>

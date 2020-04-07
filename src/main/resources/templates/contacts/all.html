@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/head">Head</div>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<!-- Main Content -->
+<main role="main">
+    <div class="container p-5">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Contacts</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="contact,iterStat: ${contacts}">
+                <tr>
+                    <th scope="row" th:text="${iterStat.count}">1</th>
+                    <td>
+                        <a href="#" th:href="@{/contacts/details/{id}(id=${contact.id})}"
+                           th:text="${contact.firstName + ' ' + contact.lastName}">First name Last name</a>
+                    </td>
+                    <td class="text-right">
+                        <a th:href="@{/contacts/edit/{id}(id=${contact.id})}" href="#" class="btn btn-secondary btn-sm"><i
+                                class="fa fa-edit"></i> Edit</a>
+                        <a th:href="@{/contacts/delete/{id}(id=${contact.id})}" href="#" class="btn btn-danger btn-sm"
+                           style="color:white;"><i class="fa fa-trash"></i> Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</main>
+<!-- Finish Main Content -->
+
+<div th:replace="fragments/footer">Footer</div>
+
+<div th:replace="fragments/scripts">Scripts</div>
+</body>
+</html>
