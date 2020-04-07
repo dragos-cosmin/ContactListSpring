@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/head">Head</div>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<!-- Main Content -->
+<main role="main">
+    <div class="container p-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a th:href="@{/}" href="#">Home</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/contacts/all}" href="#">Contacts</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Contact Details</li>
+            </ol>
+        </nav>
+
+        <div class="card text-center">
+            <div class="card-header">
+                Contact Details
+            </div>
+            <div class="card-body">
+                <h5 class="card-title mb-4" th:text="${contact.firstName + ' ' + contact.lastName}">Contact Name</h5>
+                <p class="card-text"><strong>Email: </strong> <span th:text="${contact.email}">contact@example.com</span></p>
+                <p class="card-text"><strong>Phone Number: </strong> <span th:text="${contact.phoneNumber}">Contact Phone Number</span></p>
+                <p class="card-text"><strong>Address: </strong> <span th:text="${contact.address}">Contact Address</span></p>
+                <p class="card-text"><strong>Is Favorite: </strong> <span th:text="${contact.favorite}">Contact Favorite</span></p>
+                <a th:href="@{/contacts/edit/{id}(id=${contact.id})}" href="#" class="btn btn-primary mt-3 mx-2"><i class="fa fa-edit"></i> Edit Contact</a>
+                <a id="deleteBtn" th:href="@{/contacts/delete/{id}(id=${contact.id})}" href="#" class="btn btn-danger mt-3 mx-2"><i class="fa fa-trash"></i> Delete Contact</a>
+            </div>
+            <div class="card-footer text-muted" th:text="'Updated at ' + ${#temporals.format(contact.modifyDate,'dd MMMM yyyy HH:mm')}">
+                Updated at Update Time
+            </div>
+        </div>
+
+
+    </div>
+</main>
+<!-- Finish Main Content -->
+
+<div th:replace="fragments/footer">Footer</div>
+
+<div th:replace="fragments/scripts">Scripts</div>
+
+<script>
+    let deleteButton = document.getElementById('deleteBtn');
+    deleteButton.addEventListener("click", function (e) {
+        if (!confirm('Are you sure you want to remove this contact?')) {
+            e.preventDefault();
+        }
+    }, false);
+</script>
+
+</body>
+</html>

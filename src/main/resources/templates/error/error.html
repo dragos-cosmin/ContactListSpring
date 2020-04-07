@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/head">Head</div>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<!-- Main Content -->
+<main role="main">
+    <div class="container p-5">
+        <div class="card text-center">
+            <div class="card-body">
+                <img th:src="@{'https://http.cat/' + ${statusCode}}" src="#" alt="" width="300px" height="260px">
+            </div>
+            <div class="card-footer text-muted">
+                <a th:href="@{/}" href="#">Go Home</a>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Finish Main Content -->
+
+<div th:replace="fragments/footer">Footer</div>
+
+<div th:replace="fragments/scripts">Scripts</div>
+</body>
+</html>
