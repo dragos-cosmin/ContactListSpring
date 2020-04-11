@@ -27,7 +27,7 @@
                 <p class="card-text"><strong>Address: </strong> <span th:text="${contact.address}">Contact Address</span></p>
                 <p class="card-text"><strong>Is Favorite: </strong> <span th:text="${contact.favorite}">Contact Favorite</span></p>
                 <a th:href="@{/contacts/edit/{id}(id=${contact.id})}" href="#" class="btn btn-primary mt-3 mx-2"><i class="fa fa-edit"></i> Edit Contact</a>
-                <a id="deleteBtn" th:href="@{/contacts/delete/{id}(id=${contact.id})}" href="#" class="btn btn-danger mt-3 mx-2"><i class="fa fa-trash"></i> Delete Contact</a>
+                <a th:href="@{/contacts/delete/{id}(id=${contact.id})}" href="#" class="deleteBtn btn btn-danger mt-3 mx-2"><i class="fa fa-trash"></i> Delete Contact</a>
             </div>
             <div class="card-footer text-muted" th:text="'Updated at ' + ${#temporals.format(contact.modifyDate,'dd MMMM yyyy HH:mm')}">
                 Updated at Update Time
@@ -43,14 +43,7 @@
 
 <div th:replace="fragments/scripts">Scripts</div>
 
-<script>
-    let deleteButton = document.getElementById('deleteBtn');
-    deleteButton.addEventListener("click", function (e) {
-        if (!confirm('Are you sure you want to remove this contact?')) {
-            e.preventDefault();
-        }
-    }, false);
-</script>
+<script src="/js/app.js"></script>
 
 </body>
 </html>
