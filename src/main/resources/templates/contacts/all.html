@@ -15,6 +15,10 @@
             </ol>
         </nav>
 
+        <div class="mb-3">
+            <a href="#" th:href="@{/contacts/create}" class="btn btn-success"><i class="fa fa-plus"></i> Create</a>
+        </div>
+
         <table class="table">
             <thead class="thead-dark">
             <tr>
@@ -28,13 +32,13 @@
                 <tr>
                     <th scope="row" th:text="${iterStat.count}">1</th>
                     <td>
-                        <a href="#" th:href="@{/contacts/details/{id}(id=${contact.key})}"
-                           th:text="${contact.value.firstName + ' ' + contact.value.lastName}">First name Last name</a>
+                        <a href="#" th:href="@{/contacts/details/{id}(id=${contact.id})}"
+                           th:text="${contact.firstName + ' ' + contact.lastName}">First name Last name</a>
                     </td>
                     <td class="text-right">
-                        <a th:href="@{/contacts/edit/{id}(id=${contact.key})}" href="#" class="btn btn-secondary btn-sm"><i
+                        <a th:href="@{/contacts/edit/{id}(id=${contact.id})}" href="#" class="btn btn-secondary btn-sm"><i
                                 class="fa fa-edit"></i> Edit</a>
-                        <a th:href="@{/contacts/delete/{id}(id=${contact.key})}" href="#" class="deleteBtn btn btn-danger btn-sm"
+                        <a th:href="@{/contacts/delete/{id}(id=${contact.id})}" href="#" class="deleteBtn btn btn-danger btn-sm"
                            style="color:white;"><i class="fa fa-trash"></i> Delete</a>
                     </td>
                 </tr>
