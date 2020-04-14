@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -19,6 +20,7 @@ public class Contact {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @NotNull(message = "{contact.email.notNull}")
     private String email;
     @Column(name = "phone_number")
     private String phoneNumber;
